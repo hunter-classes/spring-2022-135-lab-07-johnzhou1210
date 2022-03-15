@@ -37,8 +37,24 @@ void test(std::string fileName)
   file.close();
 }
 
+void printTxt(std::string fileName)
+{
+  std::ifstream file; file.open(fileName);
+  std::string str;
+  if (file.is_open())
+  {
+    while (std::getline(file, str))
+    {
+      std::cout << str << "\n";
+    }
+  }
+}
+
 int main()
 {
-  test("sloppy.cpp");
+  std::cout << "=====================TEST 1: \"Fixed\" sloppy.cpp============================\n\n"; test("sloppy.cpp");
+  std::cout << "=====================TEST 2: \"Fixed\" sloppy2.cpp============================\n\n"; test("sloppy2.cpp");
+  std::cout << "=====================TEST 3: \"Fixed\" sloppy3.cpp============================\n\n"; test("sloppy3.cpp");
+  std::cout << "================================END TESTS======================================\n";
   return 0;
 }
