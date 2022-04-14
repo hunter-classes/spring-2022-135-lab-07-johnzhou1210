@@ -31,7 +31,7 @@ void test(std::string fileName)
       adjustedLine = tabN(currIndentLevel) + adjustedLine;
       currIndentLevel = nxtIndentLevel;
       // std::cout << "currIndentLevel:" << currIndentLevel << ". nextIndentLevel : " << nxtIndentLevel << "\n";
-      std::cout << adjustedLine << "\n";
+      std::cout << adjustedLine << std::endl;
     }
   }
   file.close();
@@ -52,9 +52,12 @@ void printTxt(std::string fileName)
 
 int main()
 {
-  std::cout << "=====================TEST 1: \"Fixed\" sloppy.cpp============================\n\n"; test("sloppy.cpp");
-  std::cout << "=====================TEST 2: \"Fixed\" sloppy2.cpp============================\n\n"; test("sloppy2.cpp");
-  std::cout << "=====================TEST 3: \"Fixed\" sloppy3.cpp============================\n\n"; test("sloppy3.cpp");
-  std::cout << "================================END TESTS======================================\n";
+  std::cout << "=====================TEST 1: \"Fixed\" sloppy.cpp============================\n" << std::endl;
+  test("sloppy.cpp");
+  std::cout << "=====================TEST 2: \"Fixed\" sloppy2.cpp============================\n" << std::endl;
+  test("sloppy2.cpp");
+  std::cout << "=====================TEST 3: \"Fixed\" sloppy3.cpp============================\n" << std::endl;
+  test("sloppy3.cpp");
+  std::cout << "================================END TESTS======================================" << std::endl;
   return 0;
 }
