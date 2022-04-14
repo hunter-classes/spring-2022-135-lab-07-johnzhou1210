@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iostream>
+#include <fstream>
 
 int getFront(std::string str)
 {
@@ -43,4 +45,53 @@ std::string tabN(int N)
     result = result + "\t";
   }
   return result;
+}
+
+void testA(std::string fileName)
+{
+  std::ifstream file; file.open(fileName);
+  std::string str;
+  if (file.is_open())
+  {
+    while (std::getline(file, str))
+    {
+      std::string adjustedLine = removeLeadingSpaces(str);
+      std::cout << adjustedLine << std::endl;
+    }
+  }
+  file.close();
+}
+
+void testB(std::string fileName)
+{
+  std::ifstream file; file.open(fileName);
+  std::string str;
+  int currIndentLevel = 0, nxtIndentLevel = 0, numOpen = 0, numClosed = 0;
+  // std::cout << indentLevel << "\n";
+  if (file.is_open())
+  {
+    while (std::getline(file, str))
+    {
+      std::string adjustedLine = removeLeadingSpaces(str);
+      numOpen = countChar(adjustedLine, '{');
+      numClosed = countChar(adjustedLine, '}');
+      if (numOpen > 0)
+      {
+        // increase next indentation level
+        nxtIndentLevel = nxtIndentLevel + numOpen;
+      }
+      if (numClosed > 0)
+      {
+        // decrease current indentation level
+        currIndentLevel = currIndentLevel - numClosed;
+        nxtIndentLevel = nxtIndentLevel - numClosed;
+      }
+      // tab by currIndentLevel
+      adjustedLine = tabN(currIndentLevel) + adjustedLine;
+      currIndentLevel = nxtIndentLevel;
+      // std::cout << "currIndentLevel:" << currIndentLevel << ". nextIndentLevel : " << nxtIndentLevel << "\n";
+      std::cout << adjustedLine << std::endl;
+    }
+  }
+  file.close();
 }
