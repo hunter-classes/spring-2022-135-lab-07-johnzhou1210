@@ -31,7 +31,7 @@ void test(std::string fileName)
       adjustedLine = tabN(currIndentLevel) + adjustedLine;
       currIndentLevel = nxtIndentLevel;
       // std::cout << "currIndentLevel:" << currIndentLevel << ". nextIndentLevel : " << nxtIndentLevel << "\n";
-      std::cout << adjustedLine << "\n";
+      std::cout << adjustedLine << std::endl;
     }
   }
   file.close();
